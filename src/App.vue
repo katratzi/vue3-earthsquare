@@ -1,5 +1,9 @@
 <template>
-  <div id="app">@{{ user.username }} - {{ fullname }}</div>
+  <div id="app">
+    @{{ user.username }} - {{ fullname }}
+    <strong>Followers: {{ followers }}</strong>
+    <button v-on:click="followUser">Follow</button>
+  </div>
 </template>
 <script>
 // import HelloWorld from "./components/HelloWorld.vue";
@@ -8,7 +12,7 @@ export default {
   name: "App",
   data() {
     return {
-      follower: 0,
+      followers: 0,
       user: {
         id: 1,
         username: "rygel-xvi",
@@ -24,6 +28,11 @@ export default {
       return `${this.user.firstname} ${this.user.lastname}`;
     },
   },
+  methods: {
+    followUser() {
+      this.followers++;
+    },
+  },
 };
 </script>
 
@@ -34,6 +43,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  display: flex;
   margin-top: 60px;
+  flex-direction: column;
+  text-align: center;
 }
 </style>

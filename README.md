@@ -1,5 +1,14 @@
 # vue3-earthsquare
 
+# Notes
+
+Can use command line to serve project - vue ui
+
+    // the same
+    v-on:click="followUser"
+    @click="followUser
+
+
 ## Project setup
 ```
 npm install
