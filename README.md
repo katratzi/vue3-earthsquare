@@ -8,6 +8,9 @@ Can use command line to serve project - vue ui
     v-on:click="followUser"
     @click="followUser
 
+    v-for needs a key.  can provide one manually or use the index
+    <div v-for="twoot in user.twoots" :key="twoot.id">{{ twoot.content }}</div>
+    <div v-for="(twoot, index) in user.twoots" :key="index">{{ twoot.content }}</div>
 
 ## Project setup
 ```

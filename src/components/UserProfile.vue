@@ -1,8 +1,11 @@
 <template>
   <div class="user">
     <h1>@{{ user.username }}</h1>
-    <h3>admin</h3>
+    <div v-if="user.isAdmin">admin</div>
     <strong>Followers: {{ followers }}</strong>
+  </div>
+  <div v-for="twoot in user.twoots" :key="twoot.id">
+    {{ twoot.content }}
   </div>
 </template>
 <script>
@@ -20,6 +23,10 @@ export default {
         lastname: "rygel",
         email: "dominar@rygel.com",
         isAdmin: true,
+        twoots: [
+          { id: 1, content: "twotter is amazing" },
+          { id: 2, content: "hello world" },
+        ],
       },
     };
   },
