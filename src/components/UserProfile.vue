@@ -4,15 +4,21 @@
     <div v-if="user.isAdmin">admin</div>
     <strong>Followers: {{ followers }}</strong>
   </div>
-  <div v-for="twoot in user.twoots" :key="twoot.id">
-    {{ twoot.content }}
+  <div>
+    <TwootItem
+      v-for="twoot in user.twoots"
+      :key="twoot.id"
+      :username="user.username"
+      :twoot="twoot"
+    />
   </div>
 </template>
 <script>
-// import HelloWorld from "./components/HelloWorld.vue";
+import TwootItem from "./TwootItem.vue";
 
 export default {
   name: "UserProfile",
+
   data() {
     return {
       followers: 0,
@@ -29,6 +35,9 @@ export default {
         ],
       },
     };
+  },
+  components: {
+    TwootItem,
   },
   watch: {
     // when the data changes, you get what it is now and what is was
