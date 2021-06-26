@@ -1,5 +1,5 @@
 <template>
-  <div id="app">@{{ user.username }}</div>
+  <div id="app">@{{ user.username }} - {{ fullname }}</div>
 </template>
 <script>
 // import HelloWorld from "./components/HelloWorld.vue";
@@ -18,6 +18,11 @@ export default {
         isAdmin: true,
       },
     };
+  },
+  computed: {
+    fullname() {
+      return `${this.user.firstname} ${this.user.lastname}`;
+    },
   },
 };
 </script>
