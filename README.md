@@ -12,6 +12,9 @@ Can use command line to serve project - vue ui
     <div v-for="twoot in user.twoots" :key="twoot.id">{{ twoot.content }}</div>
     <div v-for="(twoot, index) in user.twoots" :key="index">{{ twoot.content }}</div>
 
+    // to prevent default submit behaviour and use a different event
+    <form @submit.prevent="createNewTwoot">
+
 ## Project setup
 ```
 npm install
