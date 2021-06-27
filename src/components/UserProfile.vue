@@ -5,7 +5,7 @@
     <strong>Followers: {{ followers }}</strong>
   </div>
   <div>
-    <form>
+    <form @submit.prevent="createNewTwoot">
       <p>
         <label for="newTwoot"><strong>New Twoot</strong></label>
       </p>
@@ -23,6 +23,7 @@
           </option>
         </select>
       </div>
+      <button>Twoot!</button>
     </form>
   </div>
   <div>
@@ -89,6 +90,18 @@ export default {
     },
     toggleFavourite(id) {
       console.log("love me " + id);
+    },
+    createNewTwoot() {
+      console.log("hello world");
+      if (this.newTwootContent && this.selectedTwootType !== "draft") {
+        // unshift adds to start
+        this.user.twoots.unshift({
+          id: this.user.twoots.length + 1,
+          content: this.newTwootContent,
+        });
+        // clear old
+        this.newTwootContent = "";
+      }
     },
   },
   mounted() {
