@@ -22,7 +22,14 @@ export default {
       return store.state.user;
     },
   },
-  mounted() {},
+  methods: {
+    helloUser() {
+      store.dispatch("setUser", "bugs bunny");
+    },
+  },
+  mounted() {
+    this.helloUser();
+  },
 };
 </script>
 
