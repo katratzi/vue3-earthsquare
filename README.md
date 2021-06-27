@@ -15,6 +15,8 @@ Can use command line to serve project - vue ui
     // to prevent default submit behaviour and use a different event
     <form @submit.prevent="createNewTwoot">
 
+change createWebHardHistory() to createWebHistory() to get rid of the # symbol in url.  And import too.
+
 ## Project setup
 ```
 npm install
