@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import { UserModule } from './user';
 
 export default createStore({
 
@@ -22,5 +23,6 @@ export default createStore({
   },
 
   modules: {
+    Neat: UserModule,
   }
 })

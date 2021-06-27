@@ -4,7 +4,7 @@
     <router-link to="/about"><h2>About</h2> </router-link> -->
     <router-link :to="{ name: 'Home' }"><h2>Home</h2> </router-link>
     <router-link :to="{ name: 'About' }"><h2>About</h2> </router-link>
-    {{ username }}
+    {{ username }} {{ tidyUser }}
     <router-view></router-view>
   </div>
 </template>
@@ -21,10 +21,14 @@ export default {
     username() {
       return store.state.user;
     },
+    tidyUser() {
+      return store.state.Neat.user;
+    },
   },
   methods: {
     helloUser() {
       store.dispatch("setUser", "bugs bunny");
+      store.dispatch("Neat/setUser", "daffy duck");
     },
   },
   mounted() {
