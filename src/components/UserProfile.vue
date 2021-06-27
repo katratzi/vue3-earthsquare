@@ -5,9 +5,13 @@
     <strong>Followers: {{ followers }}</strong>
   </div>
   <div>
-    <form @submit.prevent="createNewTwoot">
+    <form
+      @submit.prevent="createNewTwoot"
+      :class="{ 'too-long': charCount > 40 }"
+    >
       <p>
         <label for="newTwoot"><strong>New Twoot</strong></label>
+        {{ charCount }} / 40
       </p>
       <textarea rows="4" id="newTwoot" v-model="newTwootContent" />
       {{ newTwootContent }} {{ selectedTwootType }}
@@ -41,7 +45,14 @@ import TwootItem from "./TwootItem.vue";
 
 export default {
   name: "UserProfile",
-
+  computed: {
+    charCount() {
+      return this.newTwootContent.length;
+    },
+    fullname() {
+      return `${this.user.firstname} ${this.user.lastname}`;
+    },
+  },
   data() {
     return {
       newTwootContent: "",
@@ -77,11 +88,6 @@ export default {
         console.log(`${this.user.username} has lost a follower`);
       }
       // else say you lost one
-    },
-  },
-  computed: {
-    fullname() {
-      return `${this.user.firstname} ${this.user.lastname}`;
     },
   },
   methods: {
@@ -125,5 +131,9 @@ export default {
 }
 .user h1 {
   margin: 0;
+}
+
+.too-long {
+  background-color: red;
 }
 </style>
