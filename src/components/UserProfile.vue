@@ -5,6 +5,27 @@
     <strong>Followers: {{ followers }}</strong>
   </div>
   <div>
+    <form>
+      <p>
+        <label for="newTwoot"><strong>New Twoot</strong></label>
+      </p>
+      <textarea rows="4" id="newTwoot" v-model="newTwootContent" />
+      {{ newTwootContent }} {{ selectedTwootType }}
+      <div class="twootType">
+        <label for="newTwootType"><strong>Twoot type: </strong></label>
+        <select id="newTwootType" v-model="selectedTwootType">
+          <option
+            :value="option.value"
+            v-for="(option, index) in twootTypes"
+            :key="index"
+          >
+            {{ option.name }}
+          </option>
+        </select>
+      </div>
+    </form>
+  </div>
+  <div>
     <TwootItem
       v-for="twoot in user.twoots"
       :key="twoot.id"
@@ -22,7 +43,13 @@ export default {
 
   data() {
     return {
+      newTwootContent: "",
+      selectedTwootType: "instant",
       followers: 0,
+      twootTypes: [
+        { value: "draft", name: "Draft" },
+        { value: "instant", name: "Instant Twoot" },
+      ],
       user: {
         id: 1,
         username: "rygel-xvi",
